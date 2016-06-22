@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# you need to put the floppy in the computer
+
+# mke2fs the floppy.flp
+umount /dev/fd0
+mke2fs /dev/fd0 # use mke2fs to make sure that is make file system
+mkdir /mnt/floppy
+mount /dev/fd0 /mnt/floppy
+mke2fs /dev/fd0 # you can also rum this line without mount it on /mnt/floppy
+
+# make the initrd.img 
+dd if=/dev/zero of=/dev/ram1
+mke2fs -m0 /dev/ram1
+mkdir /mnt/ram
+mount /dev/ram1 /mnt/ram
+cp -r ./floppyImage/* /mnt/ram/
+umount /dev/ram1
+dd if=/dev/ram1 of=initrd.img
+gzip -v9 initrd.img
+
+# copy to /mnt/flopy
+cp ./initrd.img.gz ./boot /mnt/floppy/ -r
+
+# then you can get the floppylinux

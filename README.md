@@ -1,6 +1,9 @@
 # 前期准备工作 会用到 busybox 编译 和 linux 的源码，以及一份教程，在百度云盘中放着，想要的可以联系我
 # 但不用那些基础知识，直接写些脚本放进指定的目录，执行 config 就可以得到启动盘
 
+./floppy.flp 是一张简单的启动光驱,没有自己的脚本,只是按照教程实现了一遍
+./floppy.img 带有自己的照片,因为太大,超过了 1.44M ,所以flp装不下,换成了 img
+
 首先制作一张软盘
 dd if=/dev/zero of=floppy.flp bs=1024 count=1440
 这是制作一张1.44M的软盘，然后放到virtualbox的FloppyController上

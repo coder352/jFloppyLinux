@@ -11,7 +11,8 @@ dd if=/dev/zero of=floppy.flp bs=1024 count=1440
 
 接着就可以在 FloppyLinux/floppyImage/ 目录里写脚本了
 注意这里能实现的功能不多，最好先在我的 floppy.flp 挂载到virtualbox上打开，实验一下脚本能否运行，然后再制作Floppy
-开机启动的脚本 要写在 /boot/grub/init.d/rdS 中
+开机启动的脚本 要写在 ./floppyImage/etc/init.d/rcS 中
+会在 /boot/grub.conf 中引用
 大小不要超过1.44M，否则要在iso的光盘上制作了
 制作iso的步骤比较麻烦，可以
 dd if=/dev/zero of=/floppy.img bs=1024 count=2880
